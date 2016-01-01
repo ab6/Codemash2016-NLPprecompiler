@@ -1,9 +1,14 @@
-import operator
+import nltk
 
 def extract_entity_names(t):
+    '''
+    Extract entity names from named entity tree returned by NLTK ne_chunk method
+    :param t: tree with pos and NE tags
+    :return: list of named entities
+    '''
     entity_names = []
-    if hasattr(t, 'node') and t.node:
-        if t.node == 'NE':
+    if hasattr(t, 'label'):
+        if t.label() == 'NE':
             entity_names.append(' '.join([child[0] for child in t]), )
         else:
             for child in t:
@@ -12,18 +17,14 @@ def extract_entity_names(t):
 
 
 def extract_entities(taggedText):
+    '''
+    Create map with entity and their counts
+    :param taggedText: Parsed text (output of ne chunker) in tree form
+    :return: dict of entities and their freq counts
+    '''
     entity_names = []
     for tree in taggedText:
         entity_names.extend(extract_entity_names(tree))
+    entCounts = nltk.FreqDist(entity_names)
 
-    #create a map with entity,count count representing
-    # the number of occurrences of an entity
-    entity_count = {}
-    for entity in entity_names:
-        if entity in entity_count:
-            entity_count[entity] += 1
-        else:
-            entity_count[entity] = 1
-
-    sorted_occurrences = sorted(entity_count.iteritems(), reverse=True, key=operator.itemgetter(1))
-    return sorted_occurrences
+    return (entCounts)
