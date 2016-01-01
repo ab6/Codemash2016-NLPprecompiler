@@ -16,15 +16,18 @@ Install Python3:
 - Download: https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe
 - Run the installer, use the custom installation to set the environment variables and ensure pip is included
 
+Mac:
+- Python Mac Install Documentation: https://docs.python.org/3/using/mac.html
+
 Install Python Libraries:
-- NLTK: Open a command prompt, run: pip install nltk
-- NUMPY: Open a command prompt, run: pip install numpy
-  - IF NUMPY INSTALL FAILS (Windows): 
+- NLTK: Open a console, run: pip install nltk
+- NUMPY: Open a console, run: pip install numpy
+  - IF NUMPY INSTALL FAILS (Windows Only): 
     - Go to http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
     - Download numpy+mkl32 (numpy-1.10.2+mkl-cp35-none-win32.whl)
-    - Open a command prompt, navigate to the download directory 
+    - Open a console, navigate to the download directory 
     - Run: pip install numpy-1.10.2+mkl-cp35-none-win32.whl
-- MATPLOTLIB: Open a command prompt, run: pip install matplotlib
+- MATPLOTLIB: Open a console, run: pip install matplotlib
 
 NLTK requirements:
 - Run: python
