@@ -35,8 +35,6 @@ def extract_entities(taggedText):
 
 #get year and words for each file
 docs = [(int(fileid[:4]), state_union.raw(fileid)) for fileid in state_union.fileids()[:2]]
-text = state_union.raw("1945-Truman.txt")
-
 
 #break text down into tokens, sentences and pos
 tokens = [(year, nltk.word_tokenize(text)) for (year, text) in docs]
@@ -51,9 +49,5 @@ ne_tags = [(year, nltk.ne_chunk_sents(pos, binary=True)) for year, pos in postag
 
 entities = [(year, extract_entities(tagged)) for year, tagged in ne_tags]
 
-# print (sents[0])
-# print (senttokens[0])
-# print (postags[0])
-# print (ne_tags[0])
-# print (entities[0])
+print (entities[0])
 

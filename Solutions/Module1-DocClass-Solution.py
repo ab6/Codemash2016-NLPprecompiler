@@ -24,7 +24,7 @@ def getDocFeatures(doc, words):
 docs = [(list(brown.words(fileid)), category) for category in brown.categories() for fileid in brown.fileids(category)]
 
 #identify list of words to be used as features
-allwords = nltk.FreqDist(word.lower() for word in brown.words())
+allwords = nltk.FreqDist([word.lower() for word in brown.words()])
 featurewords = getFeatureWords(5000, allwords)
 
 #filter for stopwords
@@ -40,7 +40,7 @@ train, test = docfeatures[:400], docfeatures[400:]
 #train and test model
 classifier = nltk.NaiveBayesClassifier.train(train)
 accuracy = nltk.classify.accuracy(classifier, test)
-print accuracy
+print (accuracy)
 
 
 #Test with freq dist
