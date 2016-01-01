@@ -10,6 +10,6 @@ ids = gutenberg.fileids()
 
 blakeWords = gutenberg.words("blake-poems.txt")
 
-fdist = nltk.FreqDist(w.lower() for w in blakeWords)
+fdist = nltk.FreqDist([w.lower() for w in blakeWords])
 
-print blakeWords[:20]
+print (blakeWords[:20])
