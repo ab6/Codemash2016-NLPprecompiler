@@ -5,11 +5,12 @@ Amber McKenzie
 Pre-requisite installation
 
 Windows:
+
 Install git:
 - Download: https://git-scm.com/download/win
 - Run the installer, use Git from the Windows Command Prompt
-- Open a command prompt, navigate to a working directory, run: git clone https://github.com/ab6/Codemash2016-NLPprecompiler
-
+- Open a command prompt, navigate to a working directory
+- Run: git clone https://github.com/ab6/Codemash2016-NLPprecompiler.git
 
 Install Python3:
 - Download: https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe
@@ -20,13 +21,17 @@ Libraries:
 - numpy
 - matplotlib
 
-nltk.download()
+NLTK requirements:
+- Run: python
+- Execute the following in the python prompt
+  - import nltk
+  - nltk.download()
+- When the NLTK Downloader opens, click the Corpora tab
+- Download the following: 
+  - brown
+  - gutenberg
+  - state_union
+  - stopwords
 
 Models:
 average perceptron tagger
-
-Corpora:
-gutenberg
-stopwords
-brown
-state_union
