@@ -1,5 +1,6 @@
 import nltk
 from nltk.corpus import state_union
+import matplotlib.pyplot as plt
 
 def extract_entity_names(t):
     '''
@@ -29,18 +30,37 @@ def extract_entities(taggedText):
 
 
 #get year and words for each file
-docs = [(int(fileid[:4]), state_union.raw(fileid)) for fileid in state_union.fileids()[:2]]
+docs = [(int(fileid[:4]), state_union.raw(fileid)) for fileid in state_union.fileids()]
 
 #break text down into sentences, tokens and pos tags
+tokens = [(year, nltk.word_tokenize(text)) for year, text in docs]
 sents = [(year, nltk.sent_tokenize(text.replace("\n", " "))) for (year, text) in docs]
 senttokens = [(year, [nltk.word_tokenize(sent) for sent in entry]) for year, entry in sents]
-postags = [(year, nltk.pos_tag_sents(entry)) for year, entry in senttokens]
+#postags = [(year, nltk.pos_tag_sents(entry)) for year, entry in senttokens]
 
-#chunk text and extract entities
-ne_tags = [(year, nltk.ne_chunk_sents(pos, binary=True)) for year, pos in postags]
-entities = [(year, extract_entities(tagged)) for year, tagged in ne_tags]
+#get counts of unique words and plot over time
+unique = [(year, len(set(words))) for year, words in tokens]
+years, wordcounts = zip(*unique)
+plt.scatter(years, wordcounts)
+plt.show()
 
-allentities = [sum(i) for i in zip(*[entityList for year, entityList in entities])]
-allentfreq = nltk.FreqDist(allentities)
+#get total number of words
+total = [(year, len(words)) for year, words in tokens]
+years, lengths = zip(*total)
+plt.scatter(years, lengths)
+plt.show()
+
+# #chunk text and extract entities
+# ne_tags = [(year, nltk.ne_chunk_sents(pos, binary=True)) for year, pos in postags]
+# entities = [(year, extract_entities(tagged)) for year, tagged in ne_tags]
+# entFreqs = [(year, nltk.FreqDist(entry)) for year, entry in entities]
+#
+# #get freq dist of all entities
+# ents = [entityList for year, entityList in entities]
+# allentities = [item for sublist in ents for item in sublist]
+# allentfreq = nltk.FreqDist(allentities)
+
+
+# print (allentfreq.keys())
 
 

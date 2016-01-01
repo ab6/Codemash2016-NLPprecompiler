@@ -16,7 +16,14 @@ Install Python3:
 - Run the installer, use the custom installation to set the environment variables and ensure pip is included
 - Open a command prompt, run: pip install nltk
 
+Libraries:
+- numpy
+- matplotlib
+
 nltk.download()
+
+Models:
+average perceptron tagger
 
 Corpora:
 gutenberg
