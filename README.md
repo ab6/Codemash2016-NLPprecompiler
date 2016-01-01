@@ -37,11 +37,11 @@ NLTK requirements:
   - gutenberg
   - state_union
   - stopwords
+  - words
 - Click the Models tab
 - Download the following:
   - averaged_perceptron_tagger 
+  - maxent_ne_chunker
   - punkt
-  - 
   
-Models:
-average perceptron tagger
+
