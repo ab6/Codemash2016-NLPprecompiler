@@ -1,3 +1,18 @@
+'''
+Name: Module1-DocClass-Solution.py
+Date: January 5, 2016
+Author: Amber McKenzie
+Codemash 2016 - Precompiler
+https://github.com/ab6/Codemash2016-NLPprecompiler.git
+
+This module is designed to present an introduction to NLTK and machine learning basics in a document classification application.
+For additional information and prerequisites, see the readme on the github repo.
+
+Notes:
+-Uncomment out the stopwords filter line to filter out stopwords.
+'''
+
+
 import nltk
 import random
 from nltk.corpus import brown
@@ -41,6 +56,3 @@ train, test = docfeatures[:400], docfeatures[400:]
 classifier = nltk.NaiveBayesClassifier.train(train)
 accuracy = nltk.classify.accuracy(classifier, test)
 print (accuracy)
-
-
-#Test with freq dist
