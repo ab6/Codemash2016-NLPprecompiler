@@ -47,7 +47,7 @@ def extract_entities(taggedText):
 
 
 #get year and words for each file
-extracted= [(state_union.raw(fileid), int(fileid[:4])) for fileid in state_union.fileids()[:3]]
+extracted= [(state_union.raw(fileid), int(fileid[:4])) for fileid in state_union.fileids()]
 docs, years = zip(*extracted)
 
 #break text down into sentences, tokens
@@ -58,12 +58,12 @@ senttokens = [[nltk.word_tokenize(sent) for sent in entry] for entry in sents]
 #get counts of unique words and plot over time
 unique = [len(set(words)) for words in tokens]
 plt.scatter(years, unique)
-# plt.show()
+plt.show()
 
 #get unique/total ratio
 ratios = [(float(len(set(words)))/float(len(words))) for words in tokens]
 plt.scatter(years, ratios)
-# plt.show()
+plt.show()
 
 #get top bigrams for each year
 lower = [[word.lower() for word in words] for words in tokens]
