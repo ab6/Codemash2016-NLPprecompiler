@@ -6,7 +6,7 @@ Codemash 2016 - Precompiler
 https://github.com/ab6/Codemash2016-NLPprecompiler.git
 
 This module is designed to present NLP basics from the NLTK within a basic data analysis application.
-It covers word tokenization, sentence tokenization, part-of-speech (pos) tagging, and named entitiy tagging.
+It covers word tokenization, sentence tokenization, bigrams, part-of-speech (pos) tagging, and named entitiy tagging.
 For additional information and prerequisites, see the readme on the github repo.
 
 Notes:
@@ -47,42 +47,49 @@ def extract_entities(taggedText):
 
 
 #get year and words for each file
-docs = [(int(fileid[:4]), state_union.raw(fileid)) for fileid in state_union.fileids()]
+extracted= [(state_union.raw(fileid), int(fileid[:4])) for fileid in state_union.fileids()[:3]]
+docs, years = zip(*extracted)
 
 #break text down into sentences, tokens
-tokens = [(year, nltk.word_tokenize(text)) for year, text in docs]
-sents = [(year, nltk.sent_tokenize(text.replace("\n", " "))) for (year, text) in docs]
-senttokens = [(year, [nltk.word_tokenize(sent) for sent in entry]) for year, entry in sents]
+tokens = [nltk.word_tokenize(text) for text in docs]
+sents = [nltk.sent_tokenize(text.replace("\n", " ")) for text in docs]
+senttokens = [[nltk.word_tokenize(sent) for sent in entry] for entry in sents]
 
 #get counts of unique words and plot over time
-unique = [(year, len(set(words))) for year, words in tokens]
-years, wordcounts = zip(*unique)
-plt.scatter(years, wordcounts)
+unique = [len(set(words)) for words in tokens]
+plt.scatter(years, unique)
 # plt.show()
 
 #get unique/total ratio
-ratio = [(year, float(len(set(words)))/float(len(words))) for year, words in tokens]
-years, lengths = zip(*ratio)
-plt.scatter(years, lengths)
+ratios = [(float(len(set(words)))/float(len(words))) for words in tokens]
+plt.scatter(years, ratios)
 # plt.show()
 
+#get top bigrams for each year
+lower = [[word.lower() for word in words] for words in tokens]
+bigrams = [nltk.FreqDist(nltk.bigrams(items)) for items in lower]
+print ("Top 10 bigrams by year")
+for bis, year in zip(bigrams, years):
+    print (year, bis.keys()[:10])
+
 #chunk text and extract entities
-postags = [(year, nltk.pos_tag_sents(entry)) for year, entry in senttokens]
-ne_tags = [(year, nltk.ne_chunk_sents(pos, binary=True)) for year, pos in postags]
-entities = [(year, extract_entities(tagged)) for year, tagged in ne_tags]
-entFreqs = [(year, nltk.FreqDist(entry)) for year, entry in entities]
+postags = [nltk.pos_tag_sents(entry) for entry in senttokens]
+ne_tags = [nltk.ne_chunk_sents(pos, binary=True) for pos in postags]
+ents = [extract_entities(tagged) for tagged in ne_tags]
+entFreqs = [nltk.FreqDist(entry) for entry in ents]
 
 #get freq dist of all entities
-ents = [entityList for year, entityList in entities]
 allentities = [item for sublist in ents for item in sublist]
 allentfreq = nltk.FreqDist(allentities)
 
 #make list of top 50 most frequent and prune individual docs to take out filtered words
 filtered = allentfreq.keys()[:50]
-pruned = [(year, list(set(entFreq.keys()) - set(filtered))) for year, entFreq in entFreqs]
+pruned = [(list(set(entFreq) - set(filtered))) for entFreq in entFreqs]
 
-for year, list in pruned:
-    print (year)
-    print (list)
+print ("Top 10 entities by year")
+for year, list in zip(years, pruned):
+    print (year, pruned[:10])
+
+
 
 
