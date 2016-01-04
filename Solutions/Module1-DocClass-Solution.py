@@ -40,7 +40,7 @@ docs = [(list(brown.words(fileid)), category) for category in brown.categories()
 
 #identify list of words to be used as features
 allwords = nltk.FreqDist([word.lower() for word in brown.words()])
-featurewords = getFeatureWords(5000, allwords)
+featurewords = getFeatureWords(2000, allwords)
 
 #filter for stopwords
 #featurewords = [word for word in featurewords if word not in set(stopwords.words('english'))]

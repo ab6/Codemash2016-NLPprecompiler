@@ -2,7 +2,8 @@ import nltk
 
 def extract_entity_names(t):
     '''
-    Extract entity names from named entity tree returned by NLTK ne_chunk method
+    Extract entity names from named entity tree returned by nltk.ne_chunk_sents method
+    Note: may need modification if input is from nltk.ne_chunk method
     :param t: tree with pos and NE tags
     :return: list of named entities
     '''

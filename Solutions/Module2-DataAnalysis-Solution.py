@@ -6,7 +6,7 @@ Codemash 2016 - Precompiler
 https://github.com/ab6/Codemash2016-NLPprecompiler.git
 
 This module is designed to present NLP basics from the NLTK within a basic data analysis application.
-It covers word tokenization, sentence tokenization, bigrams, part-of-speech (pos) tagging, and named entitiy tagging.
+It covers word tokenization, sentence tokenization, bigrams, part-of-speech (pos) tagging, and named entity tagging.
 For additional information and prerequisites, see the readme on the github repo.
 
 Notes:
@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 
 def extract_entity_names(t):
     '''
-    Extract entity names from named entity tree returned by NLTK ne_chunk method
+    Extract entity names from named entity tree returned by NLTK ne_chunk_sents method
     :param t: tree with pos and NE tags
     :return: list of named entities
     '''
