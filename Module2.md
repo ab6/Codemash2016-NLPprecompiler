@@ -21,8 +21,8 @@ We will be importing the raw text from the NLTK state_union corpus and extractin
   - The text for each address can be accessed using the .raw() function for each fileid.  NLTK functions can be performed on this raw text to produce the desired output
 - Remember to analyze the functions in helperFunctions.py and use them in your solution
   - The nltk.ne_chunk() and nltk.ne_chunk_sents() functions give different outputs. Pay attention to which function you are using when passing data into the functions in helperFunctions.py
-- The matplotlib Python library will be used in this module.  The documentation for the library can be found here:
-  - http://matplotlib.org/
+- The matplotlib Python library will be used in this module.  
+  - The documentation for the library can be found here: http://matplotlib.org/
   - Code will stop executing once a graph is shown until the graph is closed. Close each graph after you are finished viewing the results.
 - The code will take some time to run if run on the entire corpus  
 
