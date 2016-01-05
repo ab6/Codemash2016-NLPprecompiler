@@ -1,25 +1,25 @@
-Introduction to NLP using NLTK and Python
-Codemash 2016
-Amber McKenzie
+#Introduction to NLP using NLTK and Python
+#Codemash 2016
+#Amber McKenzie
 
-#Pre-requisite installation
+##Pre-requisite installation
 
-##Windows:
+###Windows:
 
-###Install git:
+####Install git:
 - Download: https://git-scm.com/download/win
 - Run the installer, use Git from the Windows Command Prompt
 - Open a command prompt, navigate to a working directory
 - Run: git clone https://github.com/ab6/Codemash2016-NLPprecompiler.git
 
-###Install Python3:
+####Install Python3:
 - Download: https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe
 - Run the installer, use the custom installation to set the environment variables and ensure pip is included
 
-##Mac:
+###Mac:
 - Python Mac Install Documentation: https://docs.python.org/3/using/mac.html
 
-##Install Python Libraries:
+###Install Python Libraries:
 - NLTK: Open a console, run: pip install nltk
 - NUMPY: Open a console, run: pip install numpy
   - IF NUMPY INSTALL FAILS (Windows Only): 
@@ -29,7 +29,7 @@ Amber McKenzie
     - Run: pip install numpy-1.10.2+mkl-cp35-none-win32.whl
 - MATPLOTLIB: Open a console, run: pip install matplotlib
 
-##NLTK requirements:
+###NLTK requirements:
 - Run: python
 - Execute the following in the python prompt
   - import nltk
