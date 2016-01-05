@@ -1,6 +1,6 @@
 #Introduction to NLP using NLTK and Python
-#Codemash 2016
-#Amber McKenzie
+Codemash 2016
+Amber McKenzie
 
 ##Pre-requisite installation
 
