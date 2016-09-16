@@ -1,9 +1,9 @@
 '''
 Name: Module2-DataAnalysis-Solution.py
-Date: January 5, 2016
+Date: November 11, 2016
 Author: Amber McKenzie
-Codemash 2016 - Precompiler
-https://github.com/ab6/Codemash2016-NLPprecompiler.git
+QCon San Francisco 2016
+https://github.com/ab6/QConSF-2016.git
 
 This module is designed to present NLP basics from the NLTK within a basic data analysis application.
 It covers word tokenization, sentence tokenization, bigrams, part-of-speech (pos) tagging, and named entity tagging.
