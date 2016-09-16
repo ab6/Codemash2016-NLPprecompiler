@@ -38,7 +38,6 @@ To achieve this goal, do the following:
 - Passing an array of file ids will return all matching categories
 - The Naive-Bayes Classifier is a simple classification algorithm
   - Available through NLTK: http://www.nltk.org/_modules/nltk/classify/naivebayes.html
-- Use a smaller number of features while debugging. Once debugged, can up the number of features.
 
 ###Module 1 Walkthrough
 - Load the Brown corpus data into word list/category pairs

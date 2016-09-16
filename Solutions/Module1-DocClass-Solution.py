@@ -1,9 +1,9 @@
 '''
 Name: Module1-DocClass-Solution.py
-Date: November 11, 2016
+Date: January 5, 2016
 Author: Amber McKenzie
-QCon San Francisco 2016
-https://github.com/ab6/QConSF-2016.git
+Codemash 2016 - Precompiler
+https://github.com/ab6/Codemash2016-NLPprecompiler.git
 
 This module is designed to present an introduction to NLTK and machine learning basics in a document classification application.
 For additional information and prerequisites, see the readme on the github repo.
@@ -40,7 +40,7 @@ docs = [(list(brown.words(fileid)), category) for category in brown.categories()
 
 #identify list of words to be used as features
 allwords = nltk.FreqDist([word.lower() for word in brown.words()])
-featurewords = getFeatureWords(200, allwords)
+featurewords = getFeatureWords(2000, allwords)
 
 #filter for stopwords
 #featurewords = [word for word in featurewords if word not in set(stopwords.words('english'))]
@@ -56,14 +56,3 @@ train, test = docfeatures[:400], docfeatures[400:]
 classifier = nltk.NaiveBayesClassifier.train(train)
 accuracy = nltk.classify.accuracy(classifier, test)
 print (accuracy)
-#print (classifier.show_most_informative_features(100))
-classifier = nltk.classify.DecisionTreeClassifier.train(train, entropy_cutoff=0, support_cutoff=0)
-accuracy = nltk.classify.accuracy(classifier, test)
-print (accuracy)
-print (nltk.classify.MaxentClassifier.ALGORITHMS)
-
-#
-# # MEGAM or TADM are not rec'd for text classification
-# mec = nltk.classify.MaxentClassifier.train(train, 'GIS', trace=1, max_iter=1000)
-# accuracy = nltk.classify.accuracy(mec, test)
-# print (accuracy)
